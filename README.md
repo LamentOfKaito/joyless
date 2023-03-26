@@ -1,33 +1,24 @@
 # Joyless projects
 
-#interesting #java
-- https://github.com/google/schemaorg-java
+
+## joyless-parser
+Parse my "Joyless Markdown files" and export entries as JSON + builds a Lunr search index.
+#JavaScript #Node
+
+Notes:
+- Requires `TMDB_API_KEY` env variable.
+
 
 ## joyless-web
 #JavaScript #React
 Search.
 
-- [x] `npx create-react-app joyless-web`
-
 - Search
 - Shots Indexer (Java)
 - Web
 
-```js
-// Tribute search
 
-// Example: "opinion:liked"
-trigger = 'opinion';
-opinions = 'disliked meh ok liked loved'.split(' ');
-
-
-// Example: is:anime
-trigger = 'is';
-mainThings = 'film anime series cartoon'.split(' ');
-```
-
-
-## joyless-shots-indexer
+## [ ] joyless-shots-indexer
 #Java
 
 Uses:
@@ -47,12 +38,12 @@ class JoylessIndexer {
 ```
 
 
-## joyless-myanimelist-xml
+## [ ] joyless-myanimelist-xml
 #Java
 Parse MAL exports.
 
 
-## joyless-betweenourworlds
+## [ ] joyless-betweenourworlds
 #Java
 
 Uses:

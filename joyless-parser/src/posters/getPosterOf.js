@@ -9,7 +9,7 @@ import JoylessThing from "../JoylessThing.js";
  * @param {JoylessThing} thing
  * @returns {Promise<string?>} URL to the poster. Can be external or local.
  */
- export default async function getPosterOf(thing) {
+export default async function getPosterOf(thing) {
 
     /**
      * @param {string} l - label
@@ -25,7 +25,7 @@ import JoylessThing from "../JoylessThing.js";
             return result;
         }
     }
-    
+
     if (hasLabel('film') && hasLabel('imdb')) {
         const imdbId = thing.labels.imdb;
         const entryImg = await getYtsPoster(imdbId);
@@ -40,13 +40,13 @@ import JoylessThing from "../JoylessThing.js";
         if (result) {
             return result;
         }
-        
-        
+
+
         if (malType === 'anime') {
             // Use BetweenOurWorlds and Kitsu
             //getKitsuPoster
         }
-        
+
     }
 
     return null;

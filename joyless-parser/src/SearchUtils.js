@@ -30,7 +30,7 @@ export function prebuildLunrIndex(things) {
         this.field('opinion');
         this.field('status');
         this.field('is');
-            
+        
         docs.forEach(function (doc) {
           this.add(doc);
         }, this);
