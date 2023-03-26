@@ -1,4 +1,8 @@
-export default function KLabel({k, v}) {
+import {memo} from 'react'
+
+import './KLabel.css'
+
+export default memo(function KLabel({k, v}) {
 
     switch (k) {
         case 'imdb':
@@ -17,4 +21,4 @@ export default function KLabel({k, v}) {
         default:
             return <span className="label">{k}{v? [':', v] : null}</span>
     }
-}
+})

@@ -1,25 +1,28 @@
-import KLabel from './KLabel'
+import {memo} from 'react'
 
-export default function KThing({thing}) {
+import KLabel from './KLabel'
+import './KThing.css'
+
+export default memo(function KThing({thing}) {
     return (
-        <article id={thing.id} className="kthing">
-            <div className="__right">
+        <article id={thing.id} className='kthing'>
+            <div className='kthing__right'>
             {thing.poster ?
                     // Lazy loading.
-                    <img className='__poster' alt='' loading='lazy' src={`./posters/${thing.poster}`} />
+                    <img className='kthing__poster' alt='' loading='lazy' src={`./posters/${thing.poster}`} />
                     :
-                    <img className='__poster' alt='' src={`./poster-placeholder.jpg`} />
+                    <img className='kthing__poster' alt='' src={`./poster-placeholder.jpg`} />
             }
             </div>
-            <div className="__left">
-                <h2 className="__name">{thing.name}</h2>
+            <div className='kthing__left'>
+                <h2 className='kthing__name'>{thing.name}</h2>
 
-                <span className="__labels">
+                <span className='kthing__labels'>
                     {Object.entries(thing.labels).map(([k,v], i) => <KLabel key={i} k={k} v={v}></KLabel>)}
                 </span>
 
-                <p className="__notes" dangerouslySetInnerHTML={{__html:thing.notesHtml}}></p>
+                <p className='kthing__notes' dangerouslySetInnerHTML={{__html:thing.notesHtml}}></p>
             </div>
         </article>
     );
-}
+})

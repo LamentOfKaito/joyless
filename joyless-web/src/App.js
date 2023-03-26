@@ -1,5 +1,5 @@
 import './App.css';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import useUrlState from '@ahooksjs/use-url-state'
@@ -29,12 +29,19 @@ function searchThings(idx, query, things) {
 }
 
 function App() {
+  const searchRef = useRef(null);
+
   const [loaded, setLoaded] = useState(false);
   const [things, setThings] = useState([]);
   const [lunrIndex, setLunrIndex] = useState(null);
+  const [meta, setMeta] = useState(null);
 
   const [urlState, setUrlState] = useUrlState({q: ''});
   const query = urlState.q;
+
+  useEffect(function onLoad(){
+    searchRef.current.focus();
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -44,7 +51,9 @@ function App() {
       const fetchedIndex = await fetch('joyless.lunr.json').then(res => res.json());
       const idx = lunr.Index.load(fetchedIndex);
       setLunrIndex(idx);
-  
+ 
+      fetch('joyless.meta.json').then(res => res.json()).then(x => setMeta(x));
+
       setLoaded(true);
     }
     fetchData();
@@ -53,11 +62,15 @@ function App() {
   const filteredThings = searchThings(lunrIndex, query, things);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Kaito's Joyless junk</h1>
+    <div className="app">
+      <header className="app__header">
+        <h1 className='title'>Kaito's Joyless junk</h1>
+        <p style={{visibility: meta?.updatedOn ? 'visible' : 'hidden' }} className='subtitle'>
+          Last updated: {meta?.updatedOn}
+        </p>
         <div className="searchbar">
             <input type="search" placeholder="Unicorn is:film opinion:liked opinion:loved"
+                ref={searchRef}
                 value={query}
                 onChange={event => setUrlState({q: event.target.value})}
                 />
@@ -65,14 +78,15 @@ function App() {
       </header>
 
       <main>
-        {loaded? 
+        {loaded ?
           <ul>
             {
               filteredThings.map(thing => <li key={thing.id}><KThing thing={thing}></KThing></li>)
             }
           </ul>
           :
-          'Loading...'
+          <div className='loader'>Loading...</div>
+          
         }
       </main>
     </div>

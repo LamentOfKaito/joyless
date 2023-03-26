@@ -1,0 +1,27 @@
+.kthing {
+    background: #dddddd;
+    margin-top: 5px;
+    display: flex;
+}
+
+.kthing .kthing__poster {
+    display: block;
+    width: 100px;
+    height: 150px;
+    margin: 3px;
+    margin-right: 5px;
+}
+
+.kthing .kthing__labels {
+    display: block;
+}
+
+.kthing__notes {
+    padding: 5px;
+}
+
+.kthing__notes ul {
+    list-style: square;
+    list-style-position: inside;
+    font-size: small;
+}

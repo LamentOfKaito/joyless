@@ -3,86 +3,50 @@
     margin: 0;
 }
 
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    margin: 5px;
+}
+
+ul {
+    list-style: none;
+}
+
 a {
     color: inherit;
 }
 
-
-.App-header {
+.app__header {
     text-align: center;
     color: purple;
 }
 
-input[type="search"] {
+.title {
+}
+
+.subtitle {
+    color: #827784;
+    font-size: small;
+}
+
+.searchbar {
+    margin: 5px;
+}
+
+.searchbar input[type="search"] {
     width: 100%;
     font-size: 20px;
     border: 3px solid mediumpurple;
     padding: 5px;
 }
 
-input[type="search"]:focus {
+.searchbar input[type="search"]:focus {
     outline-color: purple;
 }
 
-h1 {
-    margin: 10px 0px;
-}
-
-
-main > ul {
-    list-style: none;
-}
-
-.__notes ul {
-    list-style: square;
-    list-style-position: inside;
-    font-size: small;
-}
-
-.kthing {
-    background: #dddddd;
-    margin: 5px;
+.loader {
     display: flex;
-}
-
-.kthing .__poster {
-    width: 150px;
-    height: 215px;
-    display: block;
-    margin: 3px;
-    margin-right: 5px;
-}
-
-.kthing .__labels {
-    display: block;
-}
-
-.kthing .label {
-    margin-left: 5px;
-    border: 2px dashed grey;
-    border-radius: 5px;
-    padding: 1px 3px;
-    font-family: Noto Mono, monospace;
-}
-
-.label.opinion {
-    color: purple;
-    font-style: normal;
-    border-color: purple;
-    border-style: solid;
-}
-
-.label.imdb {
-    background: #f5de50;
-    font-weight: bold;
-    border-style: solid;
-    border-color: orange;
-}
-
-.label.mal {
-    border-style: solid;
-    background: #2e51a2;
-    font-weight: bold;
-    border-color: mediumslateblue;
-    color: white;
+    place-content: center;
 }

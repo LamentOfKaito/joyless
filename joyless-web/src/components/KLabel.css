@@ -1,0 +1,29 @@
+.label {
+    margin-left: 5px;
+    border: 2px dashed grey;
+    border-radius: 5px;
+    padding: 1px 3px;
+    font-family: Noto Mono, monospace;
+}
+
+.label.opinion {
+    color: purple;
+    font-style: normal;
+    border-color: purple;
+    border-style: solid;
+}
+
+.label.imdb {
+    background: #f5de50;
+    font-weight: bold;
+    border-style: solid;
+    border-color: orange;
+}
+
+.label.mal {
+    border-style: solid;
+    background: #2e51a2;
+    font-weight: bold;
+    border-color: mediumslateblue;
+    color: white;
+}
