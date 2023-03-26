@@ -5,6 +5,7 @@
     "type": "module",
     "dependencies": {
         "cheerio": "^1.0.0-rc.12",
+        "commander": "^10.0.0",
         "glob-promise": "*",
         "install": "^0.13.0",
         "lunr": "*",

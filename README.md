@@ -3,23 +3,26 @@
 
 ## joyless-parser
 Parse my "Joyless Markdown files" and export entries as JSON + builds a Lunr search index.
-#JavaScript #Node
+_#JavaScript #Node_
 
 Notes:
-- Requires `TMDB_API_KEY` env variable.
+- It expects a `TMDB_API_KEY` env variable.
+- Example: Running from the CMD:
+```bat
+node joyless-parser/cli.js ^
+    --input-dir "%HOMEPATH%/Documents/GitHub/reprimanded-notes/content/joyless" ^
+    --things-output "%HOMEPATH%/www/joyless.things.json" ^
+    --lunr-output "%HOMEPATH%/www/joyless.lunr.json" ^
+    --dry
+```
 
 
 ## joyless-web
-#JavaScript #React
-Search.
-
-- Search
-- Shots Indexer (Java)
-- Web
+Render the output of `joyless-parser` with basic search functionality (via Lunr). _#JavaScript #React_
 
 
 ## [ ] joyless-shots-indexer
-#Java
+_#Java_
 
 Uses:
 - Blurhash
@@ -39,12 +42,12 @@ class JoylessIndexer {
 
 
 ## [ ] joyless-myanimelist-xml
-#Java
-Parse MAL exports.
+Parse MAL exports. _#Java_
+
 
 
 ## [ ] joyless-betweenourworlds
-#Java
+_#Java_
 
 Uses:
 - Between Our Worlds https://betweenourworlds.org
