@@ -4,15 +4,11 @@ My `joyless-XXXX.md` files actually serve as "game backlogs".
 
 - Unless otherwise specified, it is a film and is in English.
 
-**Abbreviations**:
-- LP: Let's Play or Longplay
-
-## Technicalities
-- Idea: `JoylessLine` is a schema `Review` with `About` links.
+- **Abbreviations**:
+    * LP: Let's Play or Longplay
 
 
-Labels
--------
+## Labels
 
 **My labels/URNs** AKA `kai-garden-urns` or `joyless-urns.json`
 
@@ -33,30 +29,47 @@ Labels
 
 - `casts:{actors}`
 
+- `unfindable` means that a thing could not be found (like The Broken).
+An _Arr_ project (Sonarr, Radarr) could be used to find it.
 
-What id to use
----------------
+
+## What URN to use
 
 - Anime? **MAL**
+
 - Manga? **MAL** and **mangaupdates** or **mangadex** if not completed
+
 - Game?
     - VN? **VNDB**
     - Else **IGDB** or **IMDB**
+
 - Film? **IMDB**
+
 - Series? **IMDB**
+
 - Music?
     - Vocaloid? **VOCADB**
     - Else **YouTube**
     - Possible: **musicbrainz** or **spotify**
 
 
-Name format
-------------
+## Name format
+
 TBD.
 
 Options:
 - Title (Season 02, Part 1) - Author
 - Title (Season 02, Part 1) by Author
+
+
+## Technicalities
+
+- Idea: `JoylessLine` is a schema `Review` with `About` links.
+
+### Images
+
+- [ ] How to set multiple images? (like local vs external/origin)
+- [ ] What about blurhash?
 
 ---
 
