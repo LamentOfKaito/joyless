@@ -4,8 +4,10 @@ import KLabel from './KLabel'
 import './KThing.css'
 
 export default memo(function KThing({thing}) {
+    const todoModifier = thing.checked ? '' : 'kthing--todo';
+
     return (
-        <article id={thing.id} className='kthing'>
+        <article id={thing.id} className={`kthing ${todoModifier}`}>
             <div className='kthing__right'>
             {thing.poster ?
                     // Lazy loading.

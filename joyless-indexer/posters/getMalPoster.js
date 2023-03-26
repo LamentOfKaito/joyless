@@ -1,4 +1,3 @@
-//@ts-check
 import { load } from 'cheerio';
 import JoylessCache from './JoylessCache.js';
 

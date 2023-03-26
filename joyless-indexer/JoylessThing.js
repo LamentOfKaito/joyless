@@ -1,5 +1,3 @@
-//@ts-check
-
 class Thing {
 
     /** @type {string} */

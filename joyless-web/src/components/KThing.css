@@ -25,3 +25,27 @@
     list-style-position: inside;
     font-size: small;
 }
+
+.kthing {
+    position: relative;
+    border-left: 4px solid gray;
+}
+
+.kthing--todo {
+    --todo-color: #face1c;
+    border-color: var(--todo-color);
+}
+
+.kthing--todo::before {
+    content: "todo";
+    position: absolute;
+    top: 0;
+    padding: 3px;
+    background: var(--todo-color);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;    
+}
+.kthing--todo:hover::before {
+    opacity: 1;
+}

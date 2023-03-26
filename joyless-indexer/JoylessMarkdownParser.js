@@ -1,6 +1,3 @@
-//@ts-check
-'use strict'
-
 import {unified} from 'unified';
 import remarkMarkdown from 'remark-parse';
 import remarkGfm from 'remark-gfm';
@@ -25,12 +22,13 @@ class Shortkey {
      static generateId() {
         let id;
         do {
-            id = nanoid(11);
+            id = nanoid(3);
         } while (Shortkey.existsId(id));
 
         Shortkey.usedIds.push(id);
 
-        return id;
+        // A valid HTML id needs to start with a letter
+        return 'K' + id;
     }
 
     static existsId(id) {
@@ -123,22 +121,22 @@ export default class JoylessMarkdownParser {
                  * 
                  * "- [x] Whatever" => `true`
                  * 
-                 * @type {boolean?}
+                 * @type {boolean}
                  */
-                thing.checked = node.checked;
+                thing.checked = node.checked !== false;
 
                 //thing.ast = node;
                 const para = node.children[0];
                 const [text, inlineCode] = para.children;
                 thing.name = text.value;
-                thing.metadata = inlineCode?.value || '';
-                thing.labels = parseMetadataString(thing.metadata);
+                const metadata = inlineCode?.value || '';
+                thing.labels = parseMetadataString(metadata);
 
                 const otherChildren = node.children.slice(1);
                 if (otherChildren.length === 1) {
                     thing.notesHtml = htmlifyMdast(otherChildren[0]);
                 } else {
-                    thing.notesHtml = null;
+                    thing.notesHtml = undefined;
                 }
                 things.push(thing);
             }

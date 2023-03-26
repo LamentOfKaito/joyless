@@ -1,4 +1,3 @@
-//@ts-check
 import JoylessCache from './JoylessCache.js';
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;

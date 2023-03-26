@@ -1,5 +1,3 @@
-//@ts-check
-
 /**
  * Using BetweenOurWorlds and Kitsu API
  * 

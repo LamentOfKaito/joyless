@@ -1,4 +1,3 @@
-//@ts-check
 import lunr from 'lunr';
 import JoylessThing from './JoylessThing.js';
 

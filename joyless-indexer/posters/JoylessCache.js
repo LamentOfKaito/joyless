@@ -1,4 +1,3 @@
-//@ts-check
 import { mkdir, writeFile } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';

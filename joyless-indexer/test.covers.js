@@ -1,5 +1,3 @@
-//@ts-check
-
 import getYtsPoster from "./posters/getYtsPoster";
 import getTmbdPoster from './posters/getTmbdPoster';
 import getMalPoster from './posters/getMalPoster';

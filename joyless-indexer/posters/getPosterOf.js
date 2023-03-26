@@ -1,4 +1,3 @@
-//@ts-check
 import getMalPoster from "./getMalPoster.js";
 import getTmbdPoster from "./getTmbdPoster.js";
 import getYtsPoster from "./getYtsPoster.js";

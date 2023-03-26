@@ -1,4 +1,3 @@
-//@ts-check
 import {writeFile} from 'fs/promises'
 
 import JoylessMarkdownParser from './JoylessMarkdownParser.js';

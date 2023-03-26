@@ -1,2 +1,4 @@
 node_modules
+
 joyless-web/public/posters
+joyless-web/public/joyless.*.json

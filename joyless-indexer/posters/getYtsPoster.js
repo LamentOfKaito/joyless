@@ -1,5 +1,3 @@
-//@ts-check
-'use strict';
 import JoylessCache from './JoylessCache.js';
 
 const cache = new JoylessCache();
