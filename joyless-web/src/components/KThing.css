@@ -1,42 +1,17 @@
-.kthing {
+.thing {
     background: #dddddd;
-    margin-top: 5px;
     display: flex;
-}
-
-.kthing .kthing__poster {
-    display: block;
-    width: 100px;
-    height: 150px;
-    margin: 3px;
-    margin-right: 5px;
-}
-
-.kthing .kthing__labels {
-    display: block;
-}
-
-.kthing__notes {
-    padding: 5px;
-}
-
-.kthing__notes ul {
-    list-style: square;
-    list-style-position: inside;
-    font-size: small;
-}
-
-.kthing {
     position: relative;
     border-left: 4px solid gray;
+    margin-top: 5px;
 }
 
-.kthing--todo {
+.thing--todo {
     --todo-color: #face1c;
     border-color: var(--todo-color);
 }
 
-.kthing--todo::before {
+.thing--todo::before {
     content: "todo";
     position: absolute;
     top: 0;
@@ -46,6 +21,28 @@
     opacity: 0;
     transition: opacity 0.3s;    
 }
-.kthing--todo:hover::before {
+.thing--todo:hover::before {
     opacity: 1;
+}
+
+.thing .thing__poster {
+    display: block;
+    width: 100px;
+    height: 150px;
+    margin: 3px;
+    margin-right: 5px;
+}
+
+.thing .thing__labels {
+    display: block;
+}
+
+.thing__notes {
+    padding: 5px;
+}
+
+.thing__notes ul {
+    list-style: square;
+    list-style-position: inside;
+    font-size: small;
 }

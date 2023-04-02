@@ -1,6 +1,21 @@
 # TODO
 
+## General
+
+- [ ] Replace Lunr.
+    * Its syntax does not allow for OR logic `+is:(liked OR loved)`
+    * Does not support weights. I want title to have more significance than alt or is tags 
+    * Does not support exact matching 
+    `is:animation` should not return `is:anime` results
+
+
 ## Joyless Web
+
+- [ ] Refactor: Can use CSS nesting?
+
+- [ ] Remove `ahooks/use-url-state`
+
+- [ ] UI: Add cards view (as opposed to the default list view)
 
 - [~] UI/Feat: Show Thing status as badge.
 See joyless-nu#MyStatus
@@ -22,16 +37,22 @@ See joyless-nu#MyStatus
 
 - [ ] UI: Add an animated loader.
 
-- [ ] UI: Add an icon/favicon (purple heart? hexagon?).
+- [x] UI: Add an icon/favicon (purple heart? hexagon?).
+    * Placeholder icon: Alien Monster twemoji [`1f47e.svg`](https://github.com/twitter/twemoji/blob/master/assets/svg/1f47e.svg)
 
-- [ ] UI: Add shadow to searchbox also:
-```css
-* {
-    box-sizing: border-box;
-}
-```
+- [ ] UI: Add shadow to searchbox.
+
 
 ## Joyless Parser & Deployment
+
+- [x] Make links open in a new tab (`target="_blank" rel="nofollow"`)
+
+- [x] Sort files:
+    * joyless-YEAR descending
+    * then others
+    * then joyless-todos
+
+- [ ] Replace `thing.checked` with `.status`
 
 - [ ] HOW TO DEAL WITH POSTERS?
     * Current approach: Only build locally and push to GitHub/Vercel.

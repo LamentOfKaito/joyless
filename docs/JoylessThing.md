@@ -2,7 +2,9 @@
 
 ## JoylessSchema
 
-```json
+- Idea: `JoylessLine` is a schema `Review` with `About` links.
+
+```
 schema {
     sameAs
         for each label in labels where name is a urn

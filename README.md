@@ -20,6 +20,12 @@ node joyless-parser/cli.js ^
 ## joyless-web
 Render the output of `joyless-parser` with basic search functionality (via Lunr). _#JavaScript #React_
 
+Features:
+- OpenSearch: Search directly from the omnibox (e.g. typing joylss > TAB > alice > ENTER)
+- URL state
+- [ ] List view and grid view
+- [ ] Works offline
+
 
 ## `joyless-urns.json`
 ...

@@ -1,29 +1,28 @@
 .label {
-    margin-left: 5px;
-    border: 2px dashed grey;
+    font-family: Noto Mono, monospace;
+    border: 2px solid #acacac;
     border-radius: 5px;
     padding: 1px 3px;
-    font-family: Noto Mono, monospace;
+    margin-left: 5px;
 }
 
-.label.opinion {
+.label.opinion,
+.label.rewatchable,
+.label.unfindable {
     color: purple;
-    font-style: normal;
     border-color: purple;
-    border-style: solid;
+    font-style: normal;
 }
 
 .label.imdb {
     background: #f5de50;
-    font-weight: bold;
-    border-style: solid;
     border-color: orange;
+    font-weight: bold;
 }
 
 .label.mal {
-    border-style: solid;
     background: #2e51a2;
-    font-weight: bold;
     border-color: mediumslateblue;
     color: white;
+    font-weight: bold;
 }

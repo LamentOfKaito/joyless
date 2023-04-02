@@ -1,55 +1,40 @@
-import {unified} from 'unified';
+import { unified } from 'unified';
+import { visitParents } from 'unist-util-visit-parents';
 import remarkMarkdown from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
-import {visitParents} from 'unist-util-visit-parents';
+import remarkRehype from 'remark-rehype'
+import rehypeExternalLinks from 'rehype-external-links'
+import rehypeStringify from 'rehype-stringify'
 
 import JoylessThing from './JoylessThing.js';
-
-import {nanoid} from 'nanoid';
-
-class Shortkey {
-
-    /**
-     * @type {string[]}
-     */
-    static usedIds = [];
-
-    /**
-     * Generate a random id
-     * @return {string}
-     */
-     static generateId() {
-        let id;
-        do {
-            id = nanoid(3);
-        } while (Shortkey.existsId(id));
-
-        Shortkey.usedIds.push(id);
-
-        // A valid HTML id needs to start with a letter
-        return 'K' + id;
-    }
-
-    static existsId(id) {
-        return Shortkey.usedIds.includes(id);
-    }
-
-}
+import { Shortkey } from './Shortkey.js';
 
 
 /**
  * @param {Object} mdast 
- * @returns {string}
+ * @returns {string} HTML
  */
 const htmlifyMdast = (mdast) => {
-    //@ts-ignore
-    return unified().use(remarkHtml).stringify(mdast);
+    return unified()
+        /*
+        // The following returns an error for some reason:
+        // > Error: Cannot compile unknown node `list`
+        .use(remarkRehype)
+        .use(rehypeExternalLinks, {target: '_blank', rel: ['nofollow']})
+        .use(rehypeStringify)
+        */
+        .use(remarkHtml)
+        .stringify(mdast)
+        .replace(/\<a /g, '<a target="_blank" rel="nofollow" ')
+        ;
 };
 
 /**
  * Parse the `code` part
  * `[key:value][ANOTHERKEY:value][key with no value]`
+ * 
+ * @todo Write a real parser
  * 
  * @param {string} str 
  * @returns {{[k:string]: string}} entries
@@ -58,7 +43,7 @@ export function parseMetadataString(str) {
     if (!str) {
         return {};
     }
-    
+
     const entries = str
         .slice(1, -1)
         .split('][')
@@ -92,7 +77,7 @@ export default class JoylessMarkdownParser {
         const ast = unified().use(remarkMarkdown).use(remarkGfm).parse(text);
         return ast;
     }
-    
+
     /**
      * 
      * @param {Object} mdast 
@@ -100,7 +85,7 @@ export default class JoylessMarkdownParser {
      */
     static getThings(mdast) {
         const things = [];
-        
+
         visitParents(mdast, (node, parents) => {
             if (node.type === 'listItem') {
                 // ignore sublists
@@ -108,7 +93,7 @@ export default class JoylessMarkdownParser {
                 if (!isHighestLevel) {
                     return;
                 }
-                
+
                 const thing = {};
                 thing.id = Shortkey.generateId();
 
@@ -141,7 +126,7 @@ export default class JoylessMarkdownParser {
                 things.push(thing);
             }
         });
-        
+
         return things;
     }
 

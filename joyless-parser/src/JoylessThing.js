@@ -12,6 +12,9 @@ class Thing {
     }
 }
 
+/**
+ * @todo Turn into a `.d.ts` or into a `.schema.json`
+ */
 export default class JoylessThing extends Thing {
 
     /**

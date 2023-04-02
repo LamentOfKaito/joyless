@@ -59,13 +59,14 @@ function App() {
     fetchData();
   }, []);
 
+  // TODO: Add useMemo?
   const filteredThings = searchThings(lunrIndex, query, things);
 
   return (
     <div className="app">
       <header className="app__header">
         <h1 className='title'>Kaito's Joyless junk</h1>
-        <p style={{visibility: meta?.updatedOn ? 'visible' : 'hidden' }} className='subtitle'>
+        <p className="subtitle" style={{visibility: meta?.updatedOn ? 'visible' : 'hidden' }} >
           Last updated: {meta?.updatedOn}
         </p>
         <div className="searchbar">

@@ -64,8 +64,6 @@ Options:
 
 ## Technicalities
 
-- Idea: `JoylessLine` is a schema `Review` with `About` links.
-
 ### Images
 
 - [ ] How to set multiple images? (like local vs external/origin)
