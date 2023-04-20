@@ -49,11 +49,11 @@ export function toLunrData(things) {
     return things.map(thing => {
 
         const obj = {
-            /** @type {string} */
             id: thing.id,
 
-            /** @type {string} */
             name: thing.name,
+
+            status: thing.status,
 
             /** @type {string?} */
             aka: null,
@@ -64,7 +64,6 @@ export function toLunrData(things) {
             /** @type {Array<string>} */
             is: [],
 
-            status: thing.checked === false ? 'todo' : 'done',
         };
         
         Object

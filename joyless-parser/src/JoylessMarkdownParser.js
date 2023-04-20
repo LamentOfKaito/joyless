@@ -99,6 +99,7 @@ export default class JoylessMarkdownParser {
 
                 /**
                  * Was the line checked?
+                 * The value of `node.checked` is:
                  * 
                  * "- Whatever" => `null`
                  * 
@@ -106,14 +107,23 @@ export default class JoylessMarkdownParser {
                  * 
                  * "- [x] Whatever" => `true`
                  * 
-                 * @type {boolean}
                  */
-                thing.checked = node.checked !== false;
+                const considerChecked = node.checked !== false;
 
                 //thing.ast = node;
                 const para = node.children[0];
                 const [text, inlineCode] = para.children;
-                thing.name = text.value;
+                let name;
+                const TASK_DOING_MARKER = '[~] ';
+                if (text.value?.startsWith(TASK_DOING_MARKER)) {
+                    thing.status = 'doing';
+                    name = text.value.slice(TASK_DOING_MARKER.length);
+                } else {
+                    name = text.value;
+                    thing.status = considerChecked ? 'done' : 'todo';
+                }
+                thing.name = name;
+
                 const metadata = inlineCode?.value || '';
                 thing.labels = parseMetadataString(metadata);
 

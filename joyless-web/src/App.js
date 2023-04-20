@@ -1,5 +1,5 @@
 import './App.css';
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import useUrlState from '@ahooksjs/use-url-state'
@@ -15,17 +15,17 @@ import KThing from './components/KThing'
  * @returns {Array<Object>}
  */
 function searchThings(idx, query, things) {
-    if (!idx || !query) {
+  if (!idx || !query) {
+    return things;
+  } else {
+    try {
+      const ids = idx.search(query).map(lunrResult => lunrResult.ref);
+      const result = things.filter(thing => ids.includes(thing.id));
+      return result;
+    } catch (e) {
       return things;
-    } else {
-      try {
-        const ids = idx.search(query).map(lunrResult => lunrResult.ref);
-        const result = things.filter(thing => ids.includes(thing.id));
-        return result;  
-      } catch (e) {
-        return things;
-      }
     }
+  }
 }
 
 function App() {
@@ -36,10 +36,10 @@ function App() {
   const [lunrIndex, setLunrIndex] = useState(null);
   const [meta, setMeta] = useState(null);
 
-  const [urlState, setUrlState] = useUrlState({q: ''});
+  const [urlState, setUrlState] = useUrlState({ q: '' });
   const query = urlState.q;
 
-  useEffect(function onLoad(){
+  useEffect(function onLoad() {
     searchRef.current.focus();
   }, []);
 
@@ -47,11 +47,11 @@ function App() {
     async function fetchData() {
       const fetchedThings = await fetch('joyless.things.json').then(res => res.json());
       setThings(fetchedThings);
-  
+
       const fetchedIndex = await fetch('joyless.lunr.json').then(res => res.json());
       const idx = lunr.Index.load(fetchedIndex);
       setLunrIndex(idx);
- 
+
       fetch('joyless.meta.json').then(res => res.json()).then(x => setMeta(x));
 
       setLoaded(true);
@@ -66,15 +66,15 @@ function App() {
     <div className="app">
       <header className="app__header">
         <h1 className='title'>Kaito's Joyless junk</h1>
-        <p className="subtitle" style={{visibility: meta?.updatedOn ? 'visible' : 'hidden' }} >
+        <p className="subtitle" style={{ visibility: meta?.updatedOn ? 'visible' : 'hidden' }} >
           Last updated: {meta?.updatedOn}
         </p>
         <div className="searchbar">
-            <input type="search" placeholder="Unicorn is:film opinion:liked opinion:loved"
-                ref={searchRef}
-                value={query}
-                onChange={event => setUrlState({q: event.target.value})}
-                />
+          <input type="search" placeholder="Unicorn is:film opinion:liked opinion:loved"
+            ref={searchRef}
+            value={query}
+            onChange={event => setUrlState({ q: event.target.value })}
+          />
         </div>
       </header>
 
@@ -87,9 +87,22 @@ function App() {
           </ul>
           :
           <div className='loader'>Loading...</div>
-          
+
         }
       </main>
+
+      <details>
+        <section id="help">
+          <h2>Legend</h2>
+          Status colors:
+          <ul>
+            <li><b>Done</b>: Gray</li>
+            <li><b>Doing</b>: Green</li>
+            <li><b>Todo</b>: Yellow/Orange</li>
+            <li><b>Dropped</b>: Red</li>
+          </ul>
+        </section>
+      </details>
     </div>
   );
 }

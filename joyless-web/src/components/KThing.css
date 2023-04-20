@@ -2,26 +2,50 @@
     background: #dddddd;
     display: flex;
     position: relative;
-    border-left: 4px solid gray;
+    border-left: 4px solid;
+    border-color: var(--status-color);
     margin-top: 5px;
+    height: 150px;
+    overflow-x: auto;
+}
+
+/* Status */
+.thing,
+.thing--done {
+    /* default */
+    --status-text: "done";
+    --status-color: #26448f;
+    --status-color: gray;
 }
 
 .thing--todo {
-    --todo-color: #face1c;
-    border-color: var(--todo-color);
+    --status-text: "todo";
+    --status-color: orange;
+    --status-color: #face1c;
 }
 
-.thing--todo::before {
-    content: "todo";
+.thing--doing {
+    --status-text: "doing";
+    --status-color: limegreen;
+}
+
+.thing--dropped {
+    --status-text: "dropped";
+    --status-color: firebrick;
+}
+
+[class*="thing--"]::before {
+    content: var(--status-text);
+    background-color: var(--status-color);
+    color: white;
     position: absolute;
     top: 0;
     padding: 3px;
-    background: var(--todo-color);
-    color: white;
     opacity: 0;
-    transition: opacity 0.3s;    
+    transition: opacity 0.3s;
 }
-.thing--todo:hover::before {
+
+[class*="thing--"]:hover::before {
     opacity: 1;
 }
 
@@ -29,7 +53,7 @@
     display: block;
     width: 100px;
     height: 150px;
-    margin: 3px;
+    padding: 3px;
     margin-right: 5px;
 }
 
@@ -42,7 +66,8 @@
 }
 
 .thing__notes ul {
-    list-style: square;
+    /* list-style: square; */
     list-style-position: inside;
     font-size: small;
+    margin-left: 1em;
 }

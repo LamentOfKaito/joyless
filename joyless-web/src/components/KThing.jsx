@@ -4,11 +4,11 @@ import KLabel from './KLabel'
 import './KThing.css'
 
 export default memo(function KThing({thing}) {
-    const todoModifier = thing.checked ? '' : 'thing--todo';
+    const statusModifier = `thing--${thing.status}`;
 
     return (
-        <article id={thing.id} className={`thing ${todoModifier}`}>
-            <div className='thing__right'>
+        <article id={thing.id} className={`thing ${statusModifier}`}>
+            <div className='thing__poster-container'>
             {thing.poster ?
                     // Lazy loading.
                     <img className='thing__poster' alt='' loading='lazy' src={`./posters/${thing.poster}`} />
@@ -16,7 +16,7 @@ export default memo(function KThing({thing}) {
                     <img className='thing__poster' alt='' src={`./poster-placeholder.jpg`} />
             }
             </div>
-            <div className='thing__left'>
+            <div className='thing__details-container'>
                 <h2 className='thing__name'>{thing.name}</h2>
 
                 <span className='thing__labels'>

@@ -7,6 +7,21 @@ My `joyless-XXXX.md` files actually serve as "game backlogs".
 - **Abbreviations**:
     * LP: Let's Play or Longplay
 
+## Markdown style guide
+
+- An unordered list can start with `-`, `*`, or `+`.
+You should use those symbols in order, depending on the nesting level.
+```md
+- A
+    * B
+        + C
+```
+
+- When listing labels, put my "personal" labels at the end:
+```md
+- Whatever `[X][Y][Z][rewatchable][unfindable][opinion]`
+```
+
 
 ## Labels
 
