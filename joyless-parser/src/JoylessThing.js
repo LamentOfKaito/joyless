@@ -6,10 +6,13 @@ class Thing {
     /** @type {string} */
     name;
 
+    /** @type {Array<string>} */
+    breadcrumb;
+
     image = {
         url: '',
         blurhash: ''
-    }
+    };
 }
 
 /**
@@ -18,9 +21,10 @@ class Thing {
 export default class JoylessThing extends Thing {
 
     /**
+     * Metadata string, gets parsed into `labels`.
      * @type {string?}
      */
-    metadata;
+    rawMetadata;
     
     /** @type {{[k:string]: string}} */
     labels;

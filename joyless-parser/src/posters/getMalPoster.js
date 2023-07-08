@@ -14,7 +14,7 @@ export default async function getMalPoster(malType, malId) {
         const malUrl = `https://myanimelist.net/${malType}/${malId}`
         const malHtml = await fetch(malUrl).then(res => res.text());
         const cheerioSelect = load(malHtml);
-        const imgUrl = cheerioSelect('meta[property=og:image]').attr('content');
+        const imgUrl = cheerioSelect('meta[property="og:image"]').attr('content');
         if (!imgUrl) {
             return null;
         }
@@ -23,8 +23,7 @@ export default async function getMalPoster(malType, malId) {
 
         await cache.put(entryUrl, imgUrl);
         await cache.put(entryImg, imgData);
-        return entryName;
+        return entryImg;
     }
-
 
 }

@@ -1,6 +1,6 @@
 {
     "name": "joyless-parser",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": "true",
     "type": "module",
     "dependencies": {
@@ -17,6 +17,9 @@
         "remark-rehype": "^10.1.0",
         "remark-stringify": "^10.0.2",
         "unified": "^10.1.2",
+        "unist-util-find-all-before": "^5.0.0",
+        "unist-util-parents": "^3.0.0",
+        "unist-util-select": "^5.0.0",
         "unist-util-visit-parents": "^5.1.1"
     }
 }

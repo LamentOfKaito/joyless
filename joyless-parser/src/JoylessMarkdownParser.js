@@ -1,5 +1,6 @@
 import { unified } from 'unified';
 import { visitParents } from 'unist-util-visit-parents';
+import { parents } from 'unist-util-parents';
 import remarkMarkdown from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
@@ -9,6 +10,7 @@ import rehypeStringify from 'rehype-stringify'
 
 import JoylessThing from './JoylessThing.js';
 import { Shortkey } from './Shortkey.js';
+import { getBreadcrumb } from './getBreadcrumb.js';
 
 
 /**
@@ -75,10 +77,15 @@ export default class JoylessMarkdownParser {
      */
     static parseMarkdown(text) {
         const ast = unified().use(remarkMarkdown).use(remarkGfm).parse(text);
-        return ast;
+        const withParents = parents(ast);
+        return withParents;
     }
 
     /**
+     * Get things
+     * 
+     * @todo/Refactor: Replace with `select` for the highest list item
+     * 'root > list > listItem'?
      * 
      * @param {Object} mdast 
      * @returns {Array<JoylessThing>}
@@ -110,7 +117,6 @@ export default class JoylessMarkdownParser {
                  */
                 const considerChecked = node.checked !== false;
 
-                //thing.ast = node;
                 const para = node.children[0];
                 const [text, inlineCode] = para.children;
                 let name;
@@ -123,6 +129,7 @@ export default class JoylessMarkdownParser {
                     thing.status = considerChecked ? 'done' : 'todo';
                 }
                 thing.name = name;
+                thing.breadcrumb = getBreadcrumb(mdast, node);
 
                 const metadata = inlineCode?.value || '';
                 thing.labels = parseMetadataString(metadata);

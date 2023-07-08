@@ -87,15 +87,6 @@ See joyless-nu#MyStatus
 
 ## Joyless Parser & Deployment
 
-- [x] Make links open in a new tab (`target="_blank" rel="nofollow"`)
-
-- [x] Sort files:
-    * joyless-YEAR descending
-    * then others
-    * then joyless-todos
-
-- [x] Replace `thing.checked` with `.status`
-
 - [ ] HOW TO DEAL WITH POSTERS?
     * Current approach: Only build locally and push to GitHub/Vercel.
     * [ ] Database? Flat database posters-cache.json (saved with notes)? Remote database like Mongo Atlas?
